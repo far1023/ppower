@@ -303,7 +303,11 @@ switch (ENVIRONMENT)
 		exit(3); // EXIT_CONFIG
 	}
 
-	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);
+	define('VIEWPATH', $view_folder.DIRECTORY_SEPARATOR);	
+
+	require_once BASEPATH . 'dotenv/autoloader.php';
+	$dotenv = new Dotenv\Dotenv(FCPATH);
+	$dotenv->load();
 
 /*
  * --------------------------------------------------------------------
