@@ -1,0 +1,1 @@
+<script src="<?= base_url('assets/stisla/dist/') ?>assets/js/page/index.js"></script>

@@ -1,0 +1,77 @@
+.floating-form {
+  width: 100%;
+}
+
+.floating-label {
+  position: relative;
+}
+
+.floating-input,
+.floating-select {
+  font-size: 14px;
+  padding: 4px 4px;
+  display: block;
+  min-width: 100% !important;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+}
+
+.floating-input:focus,
+.floating-select:focus {
+  outline: none;
+  border-bottom: 2px solid #2B1B67;
+}
+
+label.floats {
+  color: #999;
+  font-size: 14px;
+  font-weight: normal !important;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 5px;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.floating-input:focus~label.floats,
+.floating-input:not(:placeholder-shown)~label.floats {
+  top: -18px;
+  font-size: 14px;
+  color: #0A7FBA;
+}
+
+.floating-select:focus~label.floats,
+.floating-select:not([value=""]):valid~label.floats {
+  top: -18px;
+  font-size: 14px;
+  color: #0A7FBA;
+}
+
+
+/* active state */
+
+.floating-input:focus~.bar:before,
+.floating-input:focus~.bar:after,
+.floating-select:focus~.bar:before,
+.floating-select:focus~.bar:after {
+  width: 50%;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.floating-textarea {
+  min-height: 30px;
+  max-height: 260px;
+  overflow: hidden;
+  overflow-x: hidden;
+}
