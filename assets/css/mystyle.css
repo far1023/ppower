@@ -7,6 +7,80 @@
 	user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 
+.fa-text-calendar-stack {
+	margin-top: .45em;
+	color: #FFF;
+}
+
+.my-right-bottom {
+	position: fixed;
+	bottom: 55px;
+	right: 25px;
+	z-index: 999;
+}
+
+.social a:hover {
+	color: #0a0a0a;
+	background: #DBAA4B;
+}
+
+.text-default {
+	color: #E9C4B0 !important;
+}
+.text-default:hover {
+	color: #fff !important;
+}
+
+.text-gray {
+	color: 787878;
+}
+
+.btn-non-cta:hover {
+	color: #303030;
+	background-color: #F0F0F0;
+}
+
+a.blue {
+	color: #0A7FBA;
+}
+a.blue:hover {
+	color: #2B1B67;
+	text-decoration: underline;
+}
+
+a.alter {
+	color: #1f1f1f;
+}
+a.alter:hover {
+	color: #999;
+}
+
+img.hover:hover {
+	filter: brightness(90%);
+}
+
+div.dataTables_length  {
+	padding-top: 20px;
+	padding-left: 20px;
+}
+
+div.dataTables_filter {
+	padding-top: 20px;
+	padding-right: 20px;
+}
+
+div.dataTables_info {
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+
+div.dataTables_paginate {
+	padding-top: 20px;
+	padding-right: 20px;
+	padding-bottom: 20px;
+}
+
 .form-min {
 	border: 0;
 	outline: 0;
@@ -16,4 +90,11 @@
 
 .form-min:focus {
 	border-bottom: 2px solid;
+}
+
+.cursor-pointer:hover {
+	cursor: pointer;
+}
+.cursor-disabled:hover {
+	cursor: not-allowed;
 }
