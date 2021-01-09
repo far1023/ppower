@@ -1,20 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 /**
-	* The structure of Dashboard Class.
+	* The structure of Undangan Class.
 	* 
-	* @class Dashboard
+	* @class Undangan
 		+ @constructor
 		+ @public index()
 	*
 */
 
-class Dashboard extends CI_Controller {
+class Home extends CI_Controller {
 	public function __construct() {
 		parent::__construct();
-		if (!$this->session->userdata('level')) {
-			show_404();
-		}
 	}
 
 	/**
@@ -25,15 +22,18 @@ class Dashboard extends CI_Controller {
 		*
 	*/
 	public function index() {
-		if ($this->session->userdata('level') == 1) {
-			$view	=	'dashboard';
-			$data['main']	= $view;
-			$data['jsphp']	= $view.'JS';
+		if (!$this->session->userdata('level')) {
+			show_403();
+			return 0;
 		}
+		$data['title']	= "Home";
+		$data['main']	= "home/index";
+		$data['cssphp']	= NULL;
+		$data['jsphp']	= NULL;
 		$this->load->view('backoffice/app', $data);
 	}
 
 }
 
-/* End of file Dashboard.php */
-/* Location: ./application/controllers/Dashboard.php */
+/* End of file Undangan.php */
+/* Location: ./application/controllers/Undangan.php */

@@ -10,12 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	*
 */
 
-class Auth extends CI_Controller {
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('Mclients');
-	}
+	class Auth extends CI_Controller {
+		public function __construct()
+		{
+			parent::__construct();
+			$this->load->model('Mclients');
+		}
 
 	/**
 		* Login method
@@ -24,26 +24,33 @@ class Auth extends CI_Controller {
 			else show form login
 		*
 	*/
-	public function login()	{
-		if ($this->input->post('loginAttempt')) {
-			$error = false;	
-			$this->form_validation->set_rules('username', 'Username', 'trim|required');
-			$this->form_validation->set_rules('password', 'Password', 'trim|required');
+		public function login()	{
+			if ($this->input->post('loginAttempt')) {
+				$error = false;	
+				$this->form_validation->set_rules('username', 'Username', 'trim|required');
+				$this->form_validation->set_rules('password', 'Password', 'trim|required');
 
-			if ($this->form_validation->run() == TRUE) {
-				$valid = $this->Mclients->getByUsername();
-				
-				if ($valid) {					
-					if(password_verify($this->input->post('password'), $valid->password)) {
-						$error = false;	
-						$this->session->set_userdata('nama', $valid->nama);
-						$this->session->set_userdata('id', $valid->id);
-						$this->session->set_userdata('level', $valid->level);
-						$array = array(
-							'error'	=> $error,
-							'href'	=> site_url('home'),
-							'msg'	=> "Login berhasil",
-						);
+				if ($this->form_validation->run() == TRUE) {
+					$valid = $this->Mclients->getByUsername();
+
+					if ($valid) {					
+						if(password_verify($this->input->post('password'), $valid->password)) {
+							$error = false;	
+							$this->session->set_userdata('nama', $valid->nama);
+							$this->session->set_userdata('id', $valid->id);
+							$this->session->set_userdata('level', $valid->level);
+							$array = array(
+								'error'	=> $error,
+								'href'	=> site_url('home'),
+								'msg'	=> "Login berhasil",
+							);
+						} else {
+							$error = true;
+							$array = array(
+								'error'   => true,
+								'msg' => "Data invalid",
+							);
+						}
 					} else {
 						$error = true;
 						$array = array(
@@ -54,24 +61,19 @@ class Auth extends CI_Controller {
 				} else {
 					$error = true;
 					$array = array(
-						'error'   => true,
-						'msg' => "Data invalid",
-					);
+						'error'   => $error,
+						'user_error'	=> form_error('username', '<span class="text-danger">', '</span>'),
+						'pass_error' 	=> form_error('password', '<span class="text-danger">', '</span>'),
+						'msg' => "",
+					);	
 				}
+				echo json_encode($array);
 			} else {
-				$error = true;
-				$array = array(
-					'error'   => $error,
-					'user_error'	=> form_error('username'),
-					'pass_error' 	=> form_error('password'),
-					'msg' => "",
-				);	
+				$data['title']  = 'Halaman Login';
+
+				$this->load->view('public/login', $data);
 			}
-			echo json_encode($array);	
-		} else {
-			$this->load->view('login');
 		}
-	}
 
 	/**
 		* Logout method
@@ -81,11 +83,11 @@ class Auth extends CI_Controller {
 			+ level
 		*
 	*/
-	public function logout() {
-		$this->session->sess_destroy();
-		redirect(site_url('login'));
+		public function logout() {
+			$this->session->sess_destroy();
+			redirect(site_url('login'));
+		}
 	}
-}
 
-/* End of file Auth.php */
+	/* End of file Auth.php */
 /* Location: ./application/controllers/Auth.php */

@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-	<title>Ecommerce Dashboard &mdash; Stisla</title>
-
-	<!-- General CSS Files -->
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/modules/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/modules/fontawesome/css/all.min.css">
-
-	<!-- CSS Libraries -->
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/modules/jqvmap/dist/jqvmap.min.css">
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/modules/summernote/summernote-bs4.css">
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/modules/owlcarousel2/dist/assets/owl.carousel.min.css">
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/modules/owlcarousel2/dist/assets/owl.theme.default.min.css">
-
-	<!-- Template CSS -->
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/css/style.css">
-	<link rel="stylesheet" href="<?= base_url('assets/stisla/dist/') ?>assets/css/components.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title><?= $title ?></title>
+	
+	<!-- Favicon -->
+	<link rel="icon" href="<?= base_url(); ?>favicon.png" type="image/png">
+	
+	<link rel="stylesheet" href="<?= base_url('assets/css/mystyle.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/scrollbar.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/drag-drop-files.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/css/custom-floating-labels.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/template/plugins/fontawesome-free/css/all.min.css') ?>">
+	<link rel="stylesheet" href="<?= base_url('assets/template/dist/css/adminlte.css') ?>">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500|Inconsolata:400,700|Roboto%20Mono:400|Google%20Sans%20Display:400" rel="stylesheet">
+	<script>document.addEventListener("click", x=>0)</script>
+	<!-- Page Specific CSS File -->
+	<?php if ($cssphp) : ?>
+		<?php $this->load->view('backoffice/cssphp/' . $cssphp); ?>
+	<?php endif ?>
 </head>
-<body>
-	<div id="app">
-		<div class="main-wrapper main-wrapper-1">
-			<div class="navbar-bg"></div>
-			<?php include 'components/navbar.php' ?>
-			<?php include 'components/sidebar.php' ?>
-			<div class="main-content">
-				<?php $this->load->view('backoffice/content/'.$main); ?>
+
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper" id="app">
+		<?php include 'components/navbar.php'; ?>
+		<?php include 'components/sidebar.php'; ?>
+		<div class="content-wrapper bg-white text-sm">
+			<div class="content-header">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-sm-6">
+							<h1 class="text-dark pl-1 py-2"><?= $title ?></h1>
+						</div>
+					</div>
+				</div>
 			</div>
-			<?php include 'components/footer.php' ?>
+			<?php $this->load->view('backoffice/pages/' . $main); ?>
 		</div>
+		<?php include 'components/footer.php'; ?>
 	</div>
-
-	<!-- General JS Scripts -->
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/jquery.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/popper.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/tooltip.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/bootstrap/js/bootstrap.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/moment.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/js/stisla.js"></script>
-
-	<!-- JS Libraies -->
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/jquery.sparkline.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/chart.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/owlcarousel2/dist/owl.carousel.min.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/summernote/summernote-bs4.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/modules/chocolat/dist/js/jquery.chocolat.min.js"></script>
-
+	<script src="<?= base_url('assets/template/plugins/jquery/jquery.min.js') ?>"></script>
+	<script src="<?= base_url('assets/template/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+	<script src="<?= base_url('assets/template/dist/js/adminlte.min.js') ?>"></script>
 	<!-- Page Specific JS File -->
-	<?php $this->load->view('backoffice/jsphp/'.$jsphp); ?>
-
-	<!-- Template JS File -->
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/js/scripts.js"></script>
-	<script src="<?= base_url('assets/stisla/dist/') ?>assets/js/custom.js"></script>
+	<?php if ($jsphp) : ?>
+		<?php $this->load->view('backoffice/jsphp/' . $jsphp); ?>
+	<?php endif ?>
 </body>
 </html>

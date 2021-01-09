@@ -1,29 +1,18 @@
-<div class="main-sidebar sidebar-style-2">
-	<aside id="sidebar-wrapper">
-		<div class="sidebar-brand">
-			<a href="index.html">Stisla</a>
-		</div>
-		<div class="sidebar-brand sidebar-brand-sm">
-			<a href="index.html">St</a>
-		</div>
-		<ul class="sidebar-menu">
-			<li class="menu-header">Stisla</li>				
-			<li><a href="#" class="nav-link"><i class="far fa-square"></i> <span>Dashboard</span></a></li>
-			<li><a href="#" class="nav-link"><i class="far fa-user"></i> <span>Admin</span></a></li>
-			<li class="dropdown">
-				<a href="#" class="nav-link has-dropdown"><i class="fas fa-ellipsis-h"></i> <span>Utilities</span></a>
-				<ul class="dropdown-menu">
-					<li><a href="utilities-contact.html">Contact</a></li>
-					<li><a class="nav-link" href="utilities-invoice.html">Invoice</a></li>
-					<li><a href="utilities-subscribe.html">Subscribe</a></li>
-				</ul>
-			</li>
-		</ul>
-
-		<div class="mt-4 mb-4 p-3 hide-sidebar-mini">
-			<a href="https://getstisla.com/docs" class="btn btn-primary btn-lg btn-block btn-icon-split">
-				<i class="fas fa-rocket"></i> Documentation
-			</a>
-		</div>
-	</aside>
-</div>
+<aside class="main-sidebar sidebar-light-navy border-right">
+	<a href="<?= site_url(); ?>" class="brand-link navbar-white" target="_blank">
+		<!--<img src="<?= base_url(); ?>favicon.png" alt="site_logo" class="brand-image img-circle elevation-3" style="opacity: .8">-->
+		<span class="brand-text font-weight-light">PPower</span>
+	</a>
+	<div class="sidebar text-md">
+		<nav class="mt-4">
+			<ul class="nav nav-pills nav-sidebar flex-column nav-flat" data-widget="treeview" role="menu" data-accordion="false">
+				<li class="nav-item">
+					<a href="<?= site_url('home') ?>" class="nav-link py-2 pl-4 <?php if($this->uri->segment(1) == 'home'){echo'active';} ?>">
+						<i class="nav-icon far fa-heart fa-fw"></i>&emsp;
+						<p> Dashboard </p>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</aside>
